@@ -49,7 +49,7 @@
             }
 
             /* Allowing grid to expand more on larger screens, but with a max */
-            max-width: 900px; /* Increased max-width to allow more columns to fit without cramping */
+            max-width: 320px; /* Made max-width much smaller for smaller buttons */
             width: 100%; /* Ensure it takes full width up to max-width */
 
             /* Added border to create lines on outer edges */
@@ -98,20 +98,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem; /* Increased default font size for better visibility */
+            font-size: 2rem; /* Adjusted font size for much smaller buttons */
             font-family: 'Inter', sans-serif; /* Explicitly set font for button text, ensuring it loads */
             /* Responsive font sizes */
             @media (min-width: 640px) { /* sm breakpoint */
-                font-size: 4rem;
+                font-size: 2.2rem;
             }
             @media (min-width: 768px) { /* md breakpoint */
-                font-size: 4.5rem;
+                font-size: 2.5rem;
             }
             @media (min-width: 1024px) { /* lg breakpoint */
-                font-size: 5rem;
+                font-size: 2.8rem;
             }
             @media (min-width: 1280px) { /* xl breakpoint */
-                font-size: 5.5rem;
+                font-size: 3rem;
             }
         }
     </style>
@@ -174,6 +174,8 @@
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                     console.log("Attempting to play sound from:", soundFilePath);
+                    // Log if the browser thinks it can play this type of audio
+                    console.log("Can play type:", audioPlayer.canPlayType('audio/mpeg')); // Assuming .mp3, adjust if .wav
 
                     // --- IMPORTANT: This check confirms if you've updated the URLs ---
                     if (soundFilePath.includes("example.com")) {
