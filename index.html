@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiddish Alphabet Soundboard</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the Inter font and general layout */
+        body {
+            font-family: 'Inter', sans-serif; /* Main font for the body */
+            @apply bg-gray-100 flex items-center justify-center min-h-screen p-4;
+            direction: rtl; /* Set overall text direction to Right-to-Left */
+            text-align: right; /* Align text to the right by default */
+            /* Applying container-like styles directly to body for simplicity */
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+
+        /* Simplified structure: removed .sound-board-container */
+        .button-grid {
+            /* Applying background and shadow directly to the grid container */
+            @apply bg-white rounded-xl shadow-lg p-6 md:p-8; /* Added padding and rounded corners */
+
+            /* Responsive grid: 3 columns on small, 4 on medium, 6 on large */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Default for small screens */
+            gap: 12px; /* Consistent gap */
+            margin-top: 0; /* No top margin needed if title is removed */
+            padding-left: 12px; /* Added left padding to match gap */
+            padding-right: 12px; /* Added right padding to match gap */
+
+            /* Tailwind responsive prefixes for grid columns */
+            @media (min-width: 640px) { /* sm breakpoint */
+                grid-template-columns: repeat(4, 1fr);
+            }
+            @media (min-width: 768px) { /* md breakpoint */
+                grid-template-columns: repeat(5, 1fr);
+            }
+            @media (min-width: 1024px) { /* lg breakpoint */
+                grid-template-columns: repeat(6, 1fr); /* Fits 30 letters in 5 rows of 6 */
+            }
+            max-width: 448px; /* Equivalent to max-w-md from Tailwind */
+            width: 100%; /* Ensure it takes full width up to max-width */
+        }
+        .sound-button {
+            width: 100%;
+            padding-top: 100%; /* Makes it square by maintaining aspect ratio */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            line-height: 1;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+
+            background-color: #2563eb;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+        }
+
+        .sound-button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .sound-button:active {
+            background-color: #1e40af;
+            transform: translateY(0);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Inner span for letter to ensure correct sizing and centering */
+        .sound-button span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem; /* Large font size for Yiddish letters */
+            font-family: 'Inter', sans-serif; /* Explicitly set font for button text, ensuring it loads */
+            /* Responsive font sizes */
+            @media (min-width: 640px) { /* sm breakpoint */
+                font-size: 3rem;
+            }
+            @media (min-width: 768px) { /* md breakpoint */
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Removed .sound-board-container wrapper, styles applied to .button-grid directly -->
+    <div class="button-grid">
+        <!-- Yiddish Letters and Variants - Custom Order -->
+        <!-- IMPORTANT: Replace placeholder audio URLs with your actual hosted audio files. -->
+        <!-- Example: https://raw.githubusercontent.com/SimchaWeiss123/my-sound-board/main/sounds/yiddish_alef.mp3 -->
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_alef.mp3" data-letter="א"><span>א</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_veys.mp3" data-letter="בּ"><span>בּ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_beys.mp3" data-letter="ב"><span>ב</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_giml.mp3" data-letter="ג"><span>ג</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_dalet.mp3" data-letter="ד"><span>ד</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_hey.mp3" data-letter="ה"><span>ה</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_vov.mp3" data-letter="ו"><span>ו</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_zayin.mp3" data-letter="ז"><span>ז</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_khes.mp3" data-letter="ח"><span>ח</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_tes.mp2" data-letter="ט"><span>ט</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_yud.mp3" data-letter="י"><span>י</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_khof_dagesh.mp3" data-letter="כּ"><span>כּ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_khof.mp3" data-letter="כ"><span>כ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_khof_sofit.mp3" data-letter="ך"><span>ך</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_lamed.mp3" data-letter="ל"><span>ל</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_mem.mp3" data-letter="מ"><span>מ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_mem_sofit.mp3" data-letter="ם"><span>ם</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_nun.mp3" data-letter="נ"><span>נ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_nun_sofit.mp3" data-letter="ן"><span>ן</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_samekh.mp3" data-letter="ס"><span>ס</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_ayin.mp3" data-letter="ע"><span>ע</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_fey.mp3" data-letter="פּ"><span>פּ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_pey.mp3" data-letter="פ"><span>פ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_fey_sofit.mp3" data-letter="ף"><span>ף</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_tsadek.mp3" data-letter="צ"><span>צ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_tsadek_sofit.mp3" data-letter="ץ"><span>ץ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_kuf.mp3" data-letter="ק"><span>ק</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_resh.mp3" data-letter="ר"><span>ר</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_shin_sh.mp3" data-letter="שׁ"><span>שׁ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_sin_s.mp3" data-letter="שׂ"><span>שׂ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_tav_dagesh.mp3" data-letter="תּ"><span>תּ</span></button>
+        <button class="sound-button" data-sound="https://example.com/sounds/yiddish_tav.mp3" data-letter="ת"><span>ת</span></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const soundButtons = document.querySelectorAll('.sound-button');
+
+            const audioPlayer = new Audio();
+            let audioEnabled = false;
+
+            soundButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const soundFilePath = button.dataset.sound;
+                    const letter = button.dataset.letter;
+
+                    // Define apiKey and apiUrl at a higher scope within the click handler
+                    const apiKey = ""; // Canvas will automatically provide this in runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    console.log("Attempting to play sound from:", soundFilePath);
+
+                    // --- IMPORTANT: This check confirms if you've updated the URLs ---
+                    if (soundFilePath.includes("example.com")) {
+                        console.error("ERROR: The audio URL is still a placeholder (example.com). Please replace it with your actual hosted audio file URL.");
+                        // showMessageBox is removed, so we'll just log an error
+                        console.error("Audio URL Error: The audio link for this button is still a placeholder. Please update the 'data-sound' attribute in the HTML with the real URL of your hosted audio file.");
+                        return; // Stop execution if URL is a placeholder
+                    }
+                    // --- END IMPORTANT CHECK ---
+
+                    if (!audioPlayer.paused) {
+                        audioPlayer.pause();
+                        audioPlayer.currentTime = 0;
+                    }
+
+                    audioPlayer.src = soundFilePath;
+
+                    try {
+                        await audioPlayer.play();
+                        // Autoplay message logic removed
+                        if (!audioEnabled) { // Only log this once
+                            audioEnabled = true;
+                            console.log("Audio playback enabled after user interaction.");
+                        }
+                    } catch (error) {
+                        console.error("Error playing sound:", error);
+                        // showMessageBox is removed, so we'll just log an error
+                        console.error("Audio Playback Error: Could not play sound. Browser autoplay policy or loading issue.");
+                    }
+
+                    // LLM Integration for facts and words is now completely removed as per user request.
+                });
+            });
+        });
+    </script>
+</body>
+</html>
