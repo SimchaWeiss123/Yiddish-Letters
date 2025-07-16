@@ -24,36 +24,26 @@
             /* Applying background and shadow directly to the grid container */
             @apply bg-white rounded-xl shadow-lg p-6 md:p-8; /* Added padding and rounded corners */
 
-            /* Responsive grid: Adjusted for better fit on various screens */
-            display: grid !important; /* Force grid display */
-            gap: 16px; /* Consistent gap */
+            /* Responsive grid: 3 columns on small, 4 on medium, 6 on large */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Default for small screens */
+            gap: 12px; /* Consistent gap */
             margin-top: 0; /* No top margin needed if title is removed */
-            
-            /* Responsive horizontal padding */
-            @apply px-4 sm:px-6 md:px-8; 
+            padding-left: 12px; /* Added left padding to match gap */
+            padding-right: 12px; /* Added right padding to match gap */
 
-            /* Explicitly define grid columns for each breakpoint with !important */
-            grid-template-columns: repeat(2, 1fr) !important; /* Default: 2 columns for very small screens */
-
+            /* Tailwind responsive prefixes for grid columns */
             @media (min-width: 640px) { /* sm breakpoint */
-                grid-template-columns: repeat(3, 1fr) !important;
+                grid-template-columns: repeat(4, 1fr);
             }
             @media (min-width: 768px) { /* md breakpoint */
-                grid-template-columns: repeat(4, 1fr) !important;
+                grid-template-columns: repeat(5, 1fr);
             }
             @media (min-width: 1024px) { /* lg breakpoint */
-                grid-template-columns: repeat(5, 1fr) !important;
+                grid-template-columns: repeat(6, 1fr); /* Fits 30 letters in 5 rows of 6 */
             }
-            @media (min-width: 1280px) { /* xl breakpoint - for 6 columns on larger desktops */
-                grid-template-columns: repeat(6, 1fr) !important;
-            }
-
-            /* Allowing grid to expand more on larger screens, but with a max */
-            max-width: 320px; /* Made max-width much smaller for smaller buttons */
+            max-width: 448px; /* Equivalent to max-w-md from Tailwind */
             width: 100%; /* Ensure it takes full width up to max-width */
-
-            /* Added border to create lines on outer edges */
-            border: 1px solid #e5e7eb; /* A light gray border, similar to Tailwind's border-gray-200 */
         }
         .sound-button {
             width: 100%;
@@ -98,20 +88,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem; /* Adjusted font size for much smaller buttons */
+            font-size: 2.5rem; /* Large font size for Yiddish letters */
             font-family: 'Inter', sans-serif; /* Explicitly set font for button text, ensuring it loads */
             /* Responsive font sizes */
             @media (min-width: 640px) { /* sm breakpoint */
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
             @media (min-width: 768px) { /* md breakpoint */
-                font-size: 2.5rem;
-            }
-            @media (min-width: 1024px) { /* lg breakpoint */
-                font-size: 2.8rem;
-            }
-            @media (min-width: 1280px) { /* xl breakpoint */
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
         }
     </style>
@@ -121,40 +105,40 @@
     <!-- Removed .sound-board-container wrapper, styles applied to .button-grid directly -->
     <div class="button-grid">
         <!-- Yiddish Letters and Variants - Custom Order -->
-        <!-- IMPORTANT: All audio URLs are now set to the raw.githubusercontent.com paths with URL-encoded filenames. -->
-        <!-- Ensure the file extension (.mp3 or .wav) matches your uploaded files if different from .mp3 -->
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%90.mp3" data-letter="א"><span>א</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%91%D6%BC.mp3" data-letter="בּ"><span>בּ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%91.mp3" data-letter="ב"><span>ב</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%92.mp3" data-letter="ג"><span>ג</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%93.mp3" data-letter="ד"><span>ד</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%94.mp3" data-letter="ה"><span>ה</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%95.mp3" data-letter="ו"><span>ו</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%96.mp3" data-letter="ז"><span>ז</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%97.mp3" data-letter="ח"><span>ח</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%98.mp3" data-letter="ט"><span>ט</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%99.mp3" data-letter="י"><span>י</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9B%D6%BC.mp3" data-letter="כּ"><span>כּ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9B.mp3" data-letter="כ"><span>כ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9A.mp3" data-letter="ך"><span>ך</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9C.mp3" data-letter="ל"><span>ל</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9E.mp3" data-letter="מ"><span>מ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9D.mp3" data-letter="ם"><span>ם</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A0.mp3" data-letter="נ"><span>נ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%9F.mp3" data-letter="ן"><span>ן</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A1.mp3" data-letter="ס"><span>ס</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A2.mp3" data-letter="ע"><span>ע</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A4%D6%BC.mp3" data-letter="פּ"><span>פּ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A4.mp3" data-letter="פ"><span>פ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A3.mp3" data-letter="ף"><span>ף</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A6.mp3" data-letter="צ"><span>צ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A5.mp3" data-letter="ץ"><span>ץ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A7.mp3" data-letter="ק"><span>ק</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A8.mp3" data-letter="ר"><span>ר</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A9%D6%BC.mp3" data-letter="שׁ"><span>שׁ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%A9%D6%B3.mp3" data-letter="שׂ"><span>שׂ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%AA%D6%BC.mp3" data-letter="תּ"><span>תּ</span></button>
-        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/%D7%AA.mp3" data-letter="ת"><span>ת</span></button>
+        <!-- IMPORTANT: Double-check the file extension (.mp3 or .wav) for EACH file in your GitHub sounds folder! -->
+        <!-- The folder name in the URL is 'Yiddish%20Letters%20Sounds' -->
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/א.mp3" data-letter="א"><span>א</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/בּ.mp3" data-letter="בּ"><span>בּ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ב.mp3" data-letter="ב"><span>ב</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ג.mp3" data-letter="ג"><span>ג</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ד.mp3" data-letter="ד"><span>ד</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ה.mp3" data-letter="ה"><span>ה</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ו.mp3" data-letter="ו"><span>ו</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ז.mp3" data-letter="ז"><span>ז</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ח.mp3" data-letter="ח"><span>ח</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ט.mp3" data-letter="ט"><span>ט</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/י.mp3" data-letter="י"><span>י</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/כּ.mp3" data-letter="כּ"><span>כּ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/כ.mp3" data-letter="כ"><span>כ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ך.mp3" data-letter="ך"><span>ך</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ל.mp3" data-letter="ל"><span>ל</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/מ.mp3" data-letter="מ"><span>מ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ם.mp3" data-letter="ם"><span>ם</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/נ.mp3" data-letter="נ"><span>נ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ן.mp3" data-letter="ן"><span>ן</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ס.mp3" data-letter="ס"><span>ס</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ע.mp3" data-letter="ע"><span>ע</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/פּ.mp3" data-letter="פּ"><span>פּ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/פ.mp3" data-letter="פ"><span>פ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ף.mp3" data-letter="ף"><span>ף</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/צ.mp3" data-letter="צ"><span>צ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ץ.mp3" data-letter="ץ"><span>ץ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ק.mp3" data-letter="ק"><span>ק</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ר.mp3" data-letter="ר"><span>ר</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/שׁ.mp3" data-letter="שׁ"><span>שׁ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/שׂ.mp3" data-letter="שׂ"><span>שׂ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/תּ.mp3" data-letter="תּ"><span>תּ</span></button>
+        <button class="sound-button" data-sound="https://raw.githubusercontent.com/SimchaWeiss123/Yiddish-Letters/main/Yiddish%20Letters%20Sounds/ת.mp3" data-letter="ת"><span>ת</span></button>
     </div>
 
     <script>
@@ -174,8 +158,6 @@
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                     console.log("Attempting to play sound from:", soundFilePath);
-                    // Log if the browser thinks it can play this type of audio
-                    console.log("Can play type:", audioPlayer.canPlayType('audio/mpeg')); // Assuming .mp3, adjust if .wav
 
                     // --- IMPORTANT: This check confirms if you've updated the URLs ---
                     if (soundFilePath.includes("example.com")) {
